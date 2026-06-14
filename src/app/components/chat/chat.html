@@ -1,0 +1,100 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <h2>Orientador UPIIZ</h2>
+    <div class="tabs">
+      <button (click)="enModoTest = false; mostrarResultados = false" [class.active]="!enModoTest && !mostrarResultados">Chat</button>
+      <button (click)="enModoTest = true; mostrarResultados = false" [class.active]="enModoTest && !mostrarResultados">Test Vocacional</button>
+
+      <button *ngIf="testCompletado" (click)="enModoTest = false; mostrarResultados = true" [class.active]="mostrarResultados">Resultados</button>
+    </div>
+  </div>
+
+  <div class="chat-view" *ngIf="!enModoTest && !mostrarResultados">
+    <div class="messages">
+      <div *ngFor="let msg of mensajes" [ngClass]="['msg-bubble', msg.remitente]">
+        {{ msg.texto }}
+      </div>
+    </div>
+    <div class="chat-input">
+      <input
+        type="text"
+        [(ngModel)]="mensajeUsuario"
+        (keyup.enter)="enviarMensaje()"
+        placeholder="Escribe tu duda aquí..."
+      />
+      <button (click)="enviarMensaje()">Enviar</button>
+    </div>
+  </div>
+
+  <div class="test-view" *ngIf="enModoTest && !mostrarResultados">
+
+    <div class="test-content" *ngIf="preguntaActual < preguntasTest.length">
+      <h3>Pregunta {{ preguntaActual + 1 }} de {{ preguntasTest.length }}</h3>
+      <p class="pregunta-texto">{{ preguntasTest[preguntaActual].texto }}</p>
+
+      <div class="test-options">
+        <button
+          *ngFor="let opcion of preguntasTest[preguntaActual].opciones"
+          class="test-btn"
+          (click)="responderTest(opcion)">
+          <strong>{{ opcion.inciso }})</strong> {{ opcion.texto }}
+        </button>
+      </div>
+    </div>
+
+    <div class="test-content" *ngIf="preguntaActual >= preguntasTest.length && preguntasTest.length > 0" style="text-align: center; margin-top: 50px;">
+      <h3>Test terminado</h3>
+      <p>Por favor, revisa tus resultados en la pestaña correspondiente.</p>
+    </div>
+
+    <div *ngIf="preguntasTest.length === 0" style="text-align: center; margin-top: 20px;">
+      <p>Cargando preguntas desde el servidor...</p>
+    </div>
+  </div>
+
+  <div class="resultados-view" *ngIf="mostrarResultados">
+    <div class="resultados-header">
+      <h3>Tu Perfil Vocacional</h3>
+      <p>Con base en tus aptitudes, estas son tus opciones ideales de ingreso:</p>
+    </div>
+
+    <div class="podium">
+      <div class="opcion-tarjeta primera-opcion">
+        <h4>Primera Opción</h4>
+        <h2>{{ carrerasOrdenadas[0]?.carrera }}</h2>
+        <p>Puntaje: {{ carrerasOrdenadas[0]?.puntaje }} pts</p>
+      </div>
+
+      <div class="opcion-tarjeta segunda-opcion">
+        <h4>Segunda Opción</h4>
+        <h2>{{ carrerasOrdenadas[1]?.carrera }}</h2>
+        <p>Puntaje: {{ carrerasOrdenadas[1]?.puntaje }} pts</p>
+      </div>
+    </div>
+
+    <div class="otros-puntajes">
+      <h4>Desglose completo:</h4>
+      <ul>
+        <li *ngFor="let item of carrerasOrdenadas | slice:2">
+          {{ item.carrera }}: {{ item.puntaje }} pts
+        </li>
+      </ul>
+    </div>
+
+    <!-- MÓDULO DE SEGUIMIENTO (Solo visible en Resultados) -->
+    <div class="modulo-seguimiento" style="background-color: #e8f4f8; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: left; border-left: 4px solid #8C2449;">
+      <h4 style="margin-top: 0; color: #333;">Siguiente Paso: Proceso de Admisión</h4>
+      <p style="font-size: 0.9rem; color: #555;">¡Ya tienes tus opciones! Para ingresar a la UPIIZ debes seguir estos pasos:</p>
+      <ol style="font-size: 0.9rem; color: #555; padding-left: 20px; margin-bottom: 0;">
+        <li>Esperar la convocatoria anual del IPN en <a href="https://www.zacatecas.ipn.mx" target="_blank" style="color: #8C2449; font-weight: bold; text-decoration: underline;">www.zacatecas.ipn.mx</a>.</li>
+        <li>Registrarte en línea y obtener tu ficha.</li>
+        <li>Realizar el donativo correspondiente.</li>
+        <li>Presentar y aprobar tu examen de admisión.</li>
+      </ol>
+    </div>
+
+    <button class="btn-reiniciar" style="margin-top: 20px;" (click)="preguntaActual = 0; respuestasUsuario = []; testCompletado = false; mostrarResultados = false; enModoTest = true;">Volver a intentar</button>
+
+  </div>
+</div>
+

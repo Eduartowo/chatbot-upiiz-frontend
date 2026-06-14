@@ -1,0 +1,272 @@
+.chat-container {
+  max-width: 675px;
+  margin: 40px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background-color: #f8f9fa;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.chat-header {
+  background-color: #8C2449;
+  color: white;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.chat-header h2 {
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+}
+
+
+.tabs {
+  display: flex;
+  background-color: #6b1b36;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.tabs button.active {
+  background-color: #f8f9fa;
+  color: #8C2449;
+  border-radius: 8px 8px 0 0;
+}
+
+.messages {
+  height: 600px;
+  overflow-y: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.msg-bubble {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 15px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.bot {
+  background-color: #e0e0e0;
+  color: #333;
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+.usuario {
+  background-color: #8C2449;
+  color: white;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background-color: white;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 20px;
+  border: none;
+  background-color: black;
+  color: white;
+  outline: none;
+}
+
+.chat-input button {
+  background-color: #8C2449;
+  color: white;
+  border: none;
+  padding: 0 20px;
+  margin-left: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+.test-view {
+  padding: 20px;
+  height: 660px;
+  overflow-y: auto;
+}
+
+.test-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.test-btn {
+  background-color: white;
+  border: 1px solid #8C2449;
+  color: #333;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.test-btn:hover {
+  background-color: #8C2449;
+  color: white;
+}
+
+.test-finished {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.btn-reiniciar {
+  margin-top: 20px;
+  background-color: #8C2449;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.resultados-view {
+  padding: 20px;
+  height: 660px;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.resultados-header h3 {
+  color: #8C2449;
+  margin-bottom: 5px;
+  font-size: 1.4rem;
+}
+
+.resultados-header p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.podium {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.opcion-tarjeta {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.primera-opcion {
+  background-color: #8C2449;
+  color: white;
+  border: 2px solid #6b1b36;
+}
+
+.primera-opcion h2 {
+  margin: 10px 0;
+  font-size: 1.8rem;
+}
+
+.primera-opcion h4 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.segunda-opcion {
+  background-color: white;
+  color: #333;
+  border: 2px solid #8C2449;
+}
+
+.segunda-opcion h2 {
+  color: #8C2449;
+  margin: 10px 0;
+  font-size: 1.5rem;
+}
+
+.segunda-opcion h4 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.otros-puntajes {
+  text-align: left;
+  background-color: #f1f3f5;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.otros-puntajes h4 {
+  margin-top: 0;
+  color: #444;
+}
+
+.otros-puntajes ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.otros-puntajes li {
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+  font-weight: 500;
+}
+
+.otros-puntajes li:last-child {
+  border-bottom: none;
+}
+
+@media screen and (max-width: 768px) {
+  .chat-container {
+    margin: 15px auto;
+    width: 95%;
+  }
+
+
+  .messages {
+    height: 60vh;
+  }
+
+  .test-view, .resultados-view {
+    height: 70vh;
+  }
+
+
+  .test-btn {
+    padding: 15px;
+    font-size: 1rem;
+  }
+}
