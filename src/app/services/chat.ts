@@ -6,16 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ChatService {
-
-
   constructor(private http: HttpClient) {}
 
   obtenerPreguntas() {
     return this.http.get<any[]>('https://chatbot-upiiz-backend.onrender.com/api/preguntas');
   }
 
-  enviarMensaje(mensaje: string) {
-    return this.http.post<any>('https://chatbot-upiiz-backend.onrender.com/api/chat', { mensaje });
+  enviarMensaje(mensaje: string): Observable<any> {
+    return this.http.post<any>('https://chatbot-upiiz-backend.onrender.com/api/chat', {
+      texto: mensaje,
+    });
   }
 
   evaluarPerfil(paquete: any) {
